@@ -1,12 +1,20 @@
 {
   "name": "p1",
   "version": "1.0.0",
-  "description": "",
+  "description": "GEOG777 Project1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Brandon Buchs//UWisc-Madison",
+  "license": "ISC",
+  "engines": {
+    "node": "12.13.x"
+  },
+  "dependencies": {
+    "@turf/turf": "5.1.6",
+    "foobar": "1.1.0",
+    "turf": "3.0.14"
+  }
 }
