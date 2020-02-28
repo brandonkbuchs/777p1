@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width-device-width", initial-scale=1, shrink-to-fit="no">
+        <meta name="author" content="Brandon K Buchs">
+        <meta name = "description" content="Wisconsin Cancer/Nitrate Regression Map">
+        <script
+			  src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+              crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/simple-statistics@7.0.8/dist/simple-statistics.min.js"></script>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+        <link 
+            rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+            integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+            crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+            integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+            crossorigin=""></script>
+        <link rel="stylesheet" href="./css/leaflet-sidebar.css" />
+        <script src="./js/leaflet-sidebar.js"></script>
+        <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <title>Wisconsin Nitrate Cancer Interpolation Analysis</title>
+    </head>
+    <body>
+        <div class="row">
+            <!-- SIDEBAR -->
+            <div class ="col-sm-2" id="sidebar">
+                <div class="leaflet-sidebar-content">
+                    <div class="leaflet-sidebar-pane" id="home">
+                        <h1 class="leaflet-sidebar-header">
+                            Cancer Correlation Exploration
+                            <span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
+                        </h1>
+
+                        <p>Given nitrate concentrations from sampled wells and cancer rates from census tracts, both in Wisconsin, we are tasked to explore possible correlations between nitrate concentrations and cancer rates.</p>
+                        <p>To explore any possible relationship between these two variables, we will conduct Ordinary Least Squares <b>(OLS)</b> regression analysis.</p>
+                        <p>First, we must interpolate the nitrate concentration data into polygons using Inverse Distance Weighting <b>(IDW)</b>: The principle of IDW is that objects geographically near to one another are more likely to be alike than objects farther away.</p>
+                        <p>To interploate the data, select a distance decay coefficient <i>k-value</i> below. The default value of 2 is automatically input. <i>k</i> must be between 1 and 100.</p>
+                        <p>Next, select a size for the hexbins generated. The unit of measurement is square miles. The default value of 7 is provided, as it most closely approximates the average size of a census tract in Wisconsin.</p>
+                        <p>Press <b>Submit</b> when you have entered your values. Press <b>Reset</b> to return to the default map configuration.</p> 
+
+                        <!-- Build UI control-->
+                        <div id='ui-controls'>
+                            <div id="fieldLabel"><label>Distance Decay Coefficient (k):</label></div>
+                            <input class="user-text-inputs" type="text" id="distanceDecayCoefficient" value="2">
+
+                            <div id="fieldLabel"><label>Hexbin Size (sq miles):</label></div>
+                            <input class="user-text-inputs" type="text" id="hexbinArea" value="7">
+
+                            <br><br>
+                            <input class="btn btn-primary" id="submitBtn" type="submit" value="Submit">
+                            <input class="btn btn-primary" id="resetBtn" type="submit" value="Reset">
+                            
+                            <div id="regressionEquationLabel"><label>Regression Equation:</label></div>   
+                            <div id="regressionEquation"></div>
+
+                            <div id="rSquaredLabel"><label>R-Squared:</label></div>                    
+                            <div id="rSquared"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class = "col-sm-9" id="map"></div>
+        </div>      
+        <script src="/js/main.js"></script>
+    </body>
+</html>

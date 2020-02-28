@@ -1,0 +1,57 @@
+#map {
+    height: 950px;
+    border: 4px solid #E9E1C7;
+}
+
+.legend {
+    padding: 4px 6px;
+    font-size: 1em;
+    background: #232625;
+    border-radius: 3px;
+    border: 1px solid #E9E1C7;
+    color: #D7D9D7;
+}
+
+.legend span {
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin: 0 10px 4px 0;
+   
+}
+
+.legend label {
+    font-size: 1.1em;
+}
+
+.sidebar {
+    height: 900px;
+    padding: 0px 0px;
+    background: #232625;
+    color: #D7D9D7;    
+
+}
+
+.btn {
+    background-color: #D7D9D7;
+    color: #232635;
+    border: 2px solid #D7D9D7;
+}
+
+.btn:hover {
+    background-color: #49504E;
+    color: #EDF5F8;
+    border: 2px solid #49504E;
+}
+
+.user-text-inputs {
+    background-color: #D7D9D7;
+    color: #232625;
+
+}
+
+body {
+    background: #232625;
+    color: #D7D9D7;
+}
+
